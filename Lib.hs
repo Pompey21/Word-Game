@@ -5,6 +5,11 @@ module Lib
 	, languages
 	) where
 
+import Data.List
+
+
+type Grid = [String]
+
 someFunc :: String
 someFunc = "someFunc"
 
@@ -12,8 +17,16 @@ someString :: String
 someString = someFunc
 
 
-findHorizontals :: [String] -> [String] -> [String] -> [String]
-findHorizontals lang@(x:xs) gr@(y:ys) (q:qs) = undefined
+-- will tell me if that word exists or not
+findWord :: Grid -> String -> Bool
+findWord = undefined
+
+findWordOneLine :: String -> String -> Bool
+findWordOneLine "" _ = False
+findWordOneLine _ "" = True
+findWordOneLine (x:xs) word@(y:ys)  
+		| x == y = True && findWordOneLine xs ys
+		| otherwise = findWordOneLine xs word
 
 
 languages = [ "BASIC"
